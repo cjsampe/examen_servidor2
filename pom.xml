@@ -58,11 +58,7 @@
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.9</version>
 		</dependency>
-		<dependency>
-			<groupId>edu.sanvalero</groupId>
-			<artifactId>star-wars-library</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+
 	</dependencies>
 
 	<build>
