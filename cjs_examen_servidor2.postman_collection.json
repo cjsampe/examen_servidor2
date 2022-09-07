@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "c046e18c-6738-4765-9f46-6a3f902fe43e",
+		"name": "cjs_examen_servidor2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21878320"
+	},
+	"item": [
+		{
+			"name": "Stories",
+			"item": [
+				{
+					"name": "POST stories",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"title\": \"La nube rojo\",\r\n        \"description\": \"Relato cortos de terror'\",\r\n        \"text\": \"Lorem ipsum dolor sit amet consectetur adipiscing elit duis malesuada, taciti iaculis aptent laoreet parturient quisque venenatis vehicula, eleifend vel habitant blandit vivamus class fringilla bibendum. Natoque arcu potenti quisque fames dignissim pretium habitasse pellentesque, consequat sociosqu fringilla eget viverra orci congue. Enim semper ad mattis hac nostra aptent accumsan, venenatis euismod nam convallis nullam ultrices sociis, laoreet felis pretium ligula porta curabitur.Purus cubilia senectus tortor duis scelerisque facilisis inceptos platea libero, porta dis ad cum ante dictum arcu consequat, taciti conubia maecenas non ut gravida volutpat hendrerit. Fames blandit nulla turpis nunc volutpat orci ullamcorper consequat a, enim netus sapien cras imperdiet senectus mollis condimentum, curabitur penatibus risus dapibus sem nostra luctus proin. Accumsan ut varius facilisi lacus sem curabitur blandit volutpat semper fames, purus fermentum nisl nisi pellentesque elementum bibendum ridiculus dui, ligula eleifend fringilla est hendrerit eros id libero himenaeos.\",\r\n        \"category\": \"misterio\",\r\n        \"numberLetters\": 252\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2022/stories",
+							"host": [
+								"localhost"
+							],
+							"port": "2022",
+							"path": [
+								"stories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT stories by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"title\": \"La nube verde\",\r\n        \"description\": \"Relato cortos de terror'\",\r\n        \"text\": \"Lorem ipsum dolor sit amet consectetur adipiscing elit duis malesuada, taciti iaculis aptent laoreet parturient quisque venenatis vehicula, eleifend vel habitant blandit vivamus class fringilla bibendum. Natoque arcu potenti quisque fames dignissim pretium habitasse pellentesque, consequat sociosqu fringilla eget viverra orci congue. Enim semper ad mattis hac nostra aptent accumsan, venenatis euismod nam convallis nullam ultrices sociis, laoreet felis pretium ligula porta curabitur.Purus cubilia senectus tortor duis scelerisque facilisis inceptos platea libero, porta dis ad cum ante dictum arcu consequat, taciti conubia maecenas non ut gravida volutpat hendrerit. Fames blandit nulla turpis nunc volutpat orci ullamcorper consequat a, enim netus sapien cras imperdiet senectus mollis condimentum, curabitur penatibus risus dapibus sem nostra luctus proin. Accumsan ut varius facilisi lacus sem curabitur blandit volutpat semper fames, purus fermentum nisl nisi pellentesque elementum bibendum ridiculus dui, ligula eleifend fringilla est hendrerit eros id libero himenaeos.\",\r\n        \"category\": \"misterio\",\r\n        \"numberLetters\": 252\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2022/stories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "2022",
+							"path": [
+								"stories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH stories by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"title\": \"La nube AZUL\",\r\n        \"description\": \"Relato cortos de MIEDO'\",\r\n        \"text\": \"Lorem ipsum dolor sit amet consectetur adipiscing elit duis malesuada, taciti iaculis aptent laoreet parturient quisque venenatis vehicula, eleifend vel habitant blandit vivamus class fringilla bibendum. Natoque arcu potenti quisque fames dignissim pretium habitasse pellentesque, consequat sociosqu fringilla eget viverra orci congue. Enim semper ad mattis hac nostra aptent accumsan, venenatis euismod nam convallis nullam ultrices sociis, laoreet felis pretium ligula porta curabitur.Purus cubilia senectus tortor duis scelerisque facilisis inceptos platea libero, porta dis ad cum ante dictum arcu consequat, taciti conubia maecenas non ut gravida volutpat hendrerit. Fames blandit nulla turpis nunc volutpat orci ullamcorper consequat a, enim netus sapien cras imperdiet senectus mollis condimentum, curabitur penatibus risus dapibus sem nostra luctus proin. Accumsan ut varius facilisi lacus sem curabitur blandit volutpat semper fames, purus fermentum nisl nisi pellentesque elementum bibendum ridiculus dui, ligula eleifend fringilla est hendrerit eros id libero himenaeos.\",\r\n        \"category\": \"misterio\",\r\n        \"numberLetters\": 252\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2022/stories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "2022",
+							"path": [
+								"stories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET stories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2022/stories",
+							"host": [
+								"localhost"
+							],
+							"port": "2022",
+							"path": [
+								"stories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE stories by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2022/stories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "2022",
+							"path": [
+								"stories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET stories by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2022/stories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "2022",
+							"path": [
+								"stories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

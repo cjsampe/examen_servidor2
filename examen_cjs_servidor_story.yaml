@@ -1,0 +1,363 @@
+openapi: 3.0.2
+servers:
+  - url: /cjs_examen_servidor2
+info:
+  description: API para información relatos cortos.
+  version: "1.0"
+  title: cjs_examen_servidor2 API
+tags:
+  - name: stories
+    description: Operaciones para realizar con información de relatos cortos
+ 
+paths:
+  /stories:
+
+    get:
+      tags:
+        - stories
+      summary: Listado de relatos cortos
+      description: Obtiene la información de todos los relatos cortos, la categoría, el texto...
+      operationId: getStories
+      responses:
+        '200':
+          description: Se devuelve el listado de relatos cortos correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoryIn'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        
+        '404':
+          description: No se ha encontrado el relato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el relato corto"
+    post:
+      tags:
+        - stories
+      summary: Registro de un nuevo relato
+      description: Registra un nuevo relato en el catálogo de la tienda
+      operationId: postStory
+      requestBody:
+        $ref: '#/components/requestBodies/StoryIn'
+      responses:
+        '201':
+          description: El relato se registra correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Story'
+        '400':
+          description: Faltan campos obligatorios o hay error en el formato de entrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+          
+  /stories/{storyId}:
+    get:
+      tags: 
+        - stories
+      summary: Obtiene los datos de un relato corto
+      description: Devuelve los datos de un relato determinada
+      operationId: getStory
+      parameters:
+        - name: storyId
+          in: path
+          description: Identificador del relato
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 23
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Story'
+        '404':
+          description: No se ha encontrado el relato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el relato"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    delete:
+      tags: 
+        - stories
+      summary: Da de baja un relato
+      description: Da de baja un relato determinado
+      operationId: deleteStory
+      parameters:
+        - name: storyId
+          in: path
+          description: Identificador del relato
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 23
+      responses:
+        '204':
+          description: No content
+        '404':
+          description: No se ha encontrado el relato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el relato"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    put:
+      tags: 
+        - stories
+      summary: Modifica los datos de un relato
+      description: Modifica los datos de un relato determinado
+      operationId: modifyStory
+      parameters:
+        - name: storyId
+          in: path
+          description: Identificador del relato que se va a modificar
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos del relato
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoryIn'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Story'
+        '400':
+          description: Faltan campos obligatorios o hay error en el formato de entrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el relato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el relato"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+    patch:
+      tags: 
+        - stories
+      summary: Modifica los datos de un relato
+      description: Modifica los datos de un relato determinado
+      operationId: patchStory
+      parameters:
+        - name: storyId
+          in: path
+          description: Identificador del relato que se va a modificar
+          required: true
+          schema:
+            type: integer
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos del relato
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoryIn'
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Story'
+        '400':
+          description: Faltan campos obligatorios o hay error en el formato de entrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '404':
+          description: No se ha encontrado el relato
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el relato"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  
+  
+  
+          
+components:
+  schemas:
+    StoryIn:
+      type: object
+      properties:
+        title:
+          type: string
+          format: string
+          description: Titulo del relato
+          example: La casa azul
+        description:
+          type: string
+          format: string
+          description: Descripcion del relato
+          example: Breve explicación
+        text:
+          type: string
+          format: string
+          description: Texto del relato
+          example: Breve explicacióndahksdjkajhdskjahksdjhaksdjhkajshkdhakjshdkahkjhdskajhksdhkajhskdjhakjhdsjkhkhlahdslakñlañslñlalkdsñalskfhclnxz,mcnlsaklrhpqurpañfjñasjdñahslfhñpaiweuspdñjcñsljzxlkjldhf
+        category:
+          type: string
+          format: string
+          description: Categoría del relato
+          example: Aventura
+        numberLetters:
+          type: integer
+          format: int64
+          description: Número de letras
+          example: 1250
+        creationDate:
+          type: string
+          format: date-time
+          description: fecha de publicación
+          example: 2022-06-14
+    Story:
+      allOf:
+        - type: object
+          properties:
+            id: 
+              type: integer
+              format: int64
+              example: 23
+        - $ref: '#/components/schemas/StoryIn'
+   
+    ErrorResponse:
+      properties:
+        internalError:
+          type: number
+          format: int32
+        message:
+          type: string
+      type: object
+    ResourceNotFound:
+      allOf:
+        - type: object
+        - $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      allOf:
+        - type: object
+        - $ref: '#/components/schemas/ErrorResponse'
+      example:
+        internalError: 999
+        message: "Internal Server Error"
+    BadRequest:
+      allOf:
+        - type: object
+        - $ref: '#/components/schemas/ErrorResponse'
+      example:
+        internalError: 102
+        message: "El campo 'xxxxx' es obligatorio"
+    ErrorMap:
+      type: object
+      additionalProperties:
+        type: string
+      example:
+        quantity: must be greater than 0
+        productId: must be greater than 0
+    
+  responses:
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errorCode: 101
+            message: "Se ha producido un error en el servidor"
+    NoContent:
+      description: No Content
+    StoryNotFound:
+      description: No encontrado
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            errorCode: 404
+            message: "No encontrado"
+  
+          
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/ErrorResponse'
+            properties:
+              errors:
+               $ref: '#/components/schemas/ErrorMap'
+  requestBodies:
+    StoryIn:
+      description: Los nuevos datos del relato corto
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StoryIn'
+    
+
+ 
